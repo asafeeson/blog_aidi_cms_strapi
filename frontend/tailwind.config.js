@@ -1,6 +1,9 @@
 // tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,svelte,ts}"],
+  content: [
+    './src/**/*.{html,js,svelte,ts}', // всё, что нужно Tailwind для поиска классов
+  ],
   theme: {
     extend: {
       colors: {
@@ -13,8 +16,9 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Manrope', 'sans-serif'],
-        heading: ['Oswald', 'sans-serif']
-      }
-    }
-  }
+        heading: ['Oswald', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
 }
