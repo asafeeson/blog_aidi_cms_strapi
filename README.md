@@ -1,4 +1,3 @@
-# blog_aidi_cms_strapi
 # Настройка Monorepo SvelteKit и Strapi
 
 Этот документ описывает шаги по установке и запуску монорепозитория, содержащего frontend на SvelteKit и backend на CMS Strapi, без использования Docker.
@@ -8,7 +7,7 @@
 Склонируйте репозиторий с GitHub:
 
 ```bash
-git clone [https://github.com/asafeeson/blog_aidi_cms_strapi](https://github.com/asafeeson/blog_aidi_cms_strapi)
+git clone https://github.com/asafeeson/blog_aidi_cms_strapi
 cd blog_aidi_cms_strapi
 ```
 
@@ -16,9 +15,9 @@ cd blog_aidi_cms_strapi
 
 ### Предварительные требования
 
-* **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js.
+* **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js версии не ниже 20.
 
-* **PostgreSQL:** Установите PostgreSQL и создайте базу данных для Strapi.
+* **PostgreSQL:** Установите PostgreSQL и создайте базу данных для Strapi версии >14.
 
 ### Установка
 
@@ -34,36 +33,42 @@ cd blog_aidi_cms_strapi
     npm install
     ```
 
-3.  Создайте файл `.env` в директории `backend` и добавьте переменные окружения для подключения к базе данных PostgreSQL:
+3.  Создайте файл `.env` в директории `backend` и добавьте переменные окружения для подключения к базе данных PostgreSQL и сгенерируйте ключи и соль для Strapi:
 
     ```bash
-    DATABASE_CLIENT=postgres
-    DATABASE_HOST=your_database_host
-    DATABASE_PORT=your_database_port
-    DATABASE_NAME=your_database_name
-    DATABASE_USERNAME=your_database_username
-    DATABASE_PASSWORD=your_database_password
+        # Server
+        HOST=0.0.0.0
+        PORT=1337
+
+        # Secrets
+        APP_KEYS=tobemodified
+        API_TOKEN_SALT=tobemodified
+        ADMIN_JWT_SECRET=tobemodified
+        TRANSFER_TOKEN_SALT=tobemodified
+
+        # Database
+        DATABASE_CLIENT=postgres
+        DATABASE_HOST=127.0.0.1
+        DATABASE_PORT=5432
+        DATABASE_NAME=strapi_db_aidi
+        DATABASE_USERNAME=tobemodified
+        DATABASE_PASSWORD=tobemodified
+        DATABASE_SSL=false
+        JWT_SECRET=tobemodified
+
     ```
 
     Замените `your_database_host`, `your_database_port`, `your_database_name`, `your_database_username` и `your_database_password` на соответствующие значения.
 
-4.  Запустите Strapi:
-
-    ```bash
-    npm run develop
-    ```
-
-    Это запустит Strapi в режиме разработки. Для production, смотрите следующий шаг.
-
 ### Production установка и запуск Strapi
 
-1.  Соберите Strapi для production:
+4.  Соберите Strapi для production:
 
     ```bash
     npm run build
     ```
 
-2.  Запустите Strapi в режиме production:
+5.  Запустите Strapi в режиме production. Порт по-умолчанию 1337:
 
     ```bash
     npm start
@@ -75,9 +80,10 @@ cd blog_aidi_cms_strapi
 
 ### Предварительные требования
 
-* **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js.
+* **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js версии не ниже 20.
 
-### Установка
+### Production установка и запуск SvelteKit проекта
+
 
 1.  Перейдите в директорию `frontend`:
 
@@ -94,29 +100,29 @@ cd blog_aidi_cms_strapi
 3.  Создайте файл `.env` в директории `frontend` и добавьте необходимые переменные окружения, например, URL бэкенда Strapi:
 
     ```bash
-    VITE_API_URL=http://your_strapi_host:1337 # Укажите URL вашего Strapi backend
+        PRIVATE_STRAPI_TOKEN=tobemodified
+        PRIVATE_STRAPI_API_URL=tobemodified
+        PUBLIC_BASE_URL=tobemodified
     ```
 
-    Замените `http://your_strapi_host:1337` на фактический URL, где работает ваш Strapi.
+    Для получения PRIVATE_STRAPI_TOKEN вам необходимо зайти в админку Strapi, перейти в раздел API Tokens -> Full Access и нажмите кнопку Regenerate, после чего появится Token.
+    PRIVATE_STRAPI_API_URL - используется для запросов сервер-сервер в процессе SSR.
+    PUBLIC_BASE_URL - внешний URL для подгрузки изображений на стороне клиента.
 
-4.  Запустите SvelteKit в режиме разработки:
 
-    ```bash
-    npm run dev
-    ```
-
-### Production установка и запуск SvelteKit проекта
-
-1.  Установите зависимости:
+4.  Установите зависимости:
 
     ```bash
     npm install
     ```
 
-2.  Соберите SvelteKit для production:
+5.  Соберите SvelteKit для production:
 
     ```bash
     npm run build
     ```
 
-3.  Запустите SvelteKit приложение. Точный способ запуска зависит от конфигурации вашего production-окружения. Например, если вы размещаете приложение на Node.js сервере, вам может потребоваться использовать адаптер `@sveltejs/adapter-node` и запустить сгенерированный файл.
+6.  Запустите SvelteKit приложение. Порт по умолчанию 3000.
+    ```bash
+    npm run start
+    ```
