@@ -2,9 +2,15 @@
 	import ArticleCard from '$lib/components/ui/ArticleCard.svelte';
 	import type { PageData } from './$types';
 	import { PUBLIC_BASE_URL } from '$env/static/public';
+	import { marked } from 'marked';
 
 	const { data }: { data: PageData } = $props();
 	console.log(data.article.cover);
+
+	function parseMarkdown(text: string): string {
+		const parsed = marked.parse(text);
+		return parsed;
+	}
 </script>
 
 <article class="mb-20">
@@ -20,10 +26,7 @@
 			{data.article.title}
 		</h1>
 		<div class="mb-[37px] text-lg text-black">
-			<p>
-				{data.article?.content}
-			</p>
-			{@html data.article?.content}
+			{@html parseMarkdown(data.article?.content)}
 		</div>
 	</section>
 	<footer id="related-articles">
