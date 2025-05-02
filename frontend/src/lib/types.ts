@@ -61,6 +61,7 @@ export interface IBlogArticle {
 	publishedAt?: string;
 	cover?: IImage;
 	tags?: any[];
+	seodata: any;
 
 }
 

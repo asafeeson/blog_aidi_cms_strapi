@@ -14,28 +14,28 @@
 </script>
 
 <svelte:head>
-	<title>{data.globalSeoData.siteTitle}</title>
-	<meta name="description" content={data.globalSeoData.siteDescription} />
-	{#if data.globalSeoData.defaultKeywords}
-		<meta name="keywords" content={data.globalSeoData.defaultKeywords} />
+	<title>{data.article?.seodata?.metaTitle}</title>
+	<meta name="description" content={data.article?.seodata?.metaDescription} />
+	{#if data.article?.seodata?.defaultKeywords}
+		<meta name="keywords" content={data.article?.seodata?.keywords} />
 	{/if}
-	{#if data.globalSeoData.defaultCanonicalURL}
-		<link rel="canonical" href={data.globalSeoData.defaultCanonicalURL} />
+	{#if data.article?.seodata?.defaultCanonicalURL}
+		<link rel="canonical" href={data.article?.seodata?.defaultCanonicalURL} />
 	{/if}
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={page.url.href} />
-	<meta property="og:title" content={data.globalSeoData.ogTitle} />
-	<meta property="og:description" content={data.globalSeoData.ogDescription} />
-	{#if data.globalSeoData.ogImage}
-		<meta property="og:image" content={data.globalSeoData.ogImage} />
+	<meta property="og:title" content={data.article?.seodata?.ogTitle} />
+	<meta property="og:description" content={data.article?.seodata?.ogDescription} />
+	{#if data.article?.seodata?.ogImage}
+		<meta property="og:image" content={data.article?.seodata?.ogImage.url} />
 	{/if}
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={page.url.href} />
-	<meta property="twitter:title" content={data.globalSeoData.ogTitle} />
-	<meta property="twitter:description" content={data.globalSeoData.ogDescription} />
-	{#if data.globalSeoData.ogImage}
-		<meta property="twitter:image" content={data.globalSeoData.ogImage} />
+	<meta property="twitter:title" content={data.article?.seodata?.ogTitle} />
+	<meta property="twitter:description" content={data.article?.seodata?.ogDescription} />
+	{#if data.article?.seodata?.ogImage}
+		<meta property="twitter:image" content={data.article?.seodata?.ogImage} />
 	{/if}
 </svelte:head>
 

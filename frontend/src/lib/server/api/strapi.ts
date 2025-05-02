@@ -48,7 +48,12 @@ export async function getArticleBySlug(slug: string) {
 		url.searchParams.append('filters[slug][$eq]', slug);
 		url.searchParams.append('fields[0]', 'title');
 		url.searchParams.append('fields[1]', 'content');
-		// url.searchParams.append('fields[2]', 'seo');
+
+		url.searchParams.append('populate[seodata][fields][0]', 'metaTitle');
+		url.searchParams.append('populate[seodata][fields][1]', 'metaDescription');
+		url.searchParams.append('populate[seodata][fields][2]', 'keywords');
+		url.searchParams.append('populate[seodata][fields][3]', 'ogTitle');
+		url.searchParams.append('populate[seodata][fields][4]', 'ogDescription');
 
 		url.searchParams.append('populate[cover][fields][0]', 'url');
 		url.searchParams.append('populate[cover][fields][1]', 'width');
@@ -155,28 +160,6 @@ export async function getGlobalPage() {
 		return data;
 	} catch (error) {
 		console.error('Error fetching global SEO from Strapi:', error);
-		return null;
-	}
-}
-
-export async function fetchArticle(slug: string) {
-	try {
-		const res = await fetch(
-			`${STRAPI_API_URL}/api/articles?filters[slug][<span class="math-inline">eq\]\=</span>{slug}&populate=cover,seo.ogImage`,
-			{
-				headers: {
-					Authorization: `Bearer ${STRAPI_TOKEN}`
-				}
-			}
-		);
-		if (!res.ok) {
-			console.error(`Error fetching article "${slug}" from Strapi:`, res.statusText);
-			return null;
-		}
-		const { data } = await res.json();
-		return data?.length > 0 ? data[0].attributes : null;
-	} catch (error) {
-		console.error(`Error fetching article "${slug}" from Strapi:`, error);
 		return null;
 	}
 }
