@@ -3,7 +3,6 @@
 	import { page } from '$app/state';
 
 	let { links }: { links: IMenuItem[] } = $props();
-	console.log(links);
 	function comparePathname(url: string): boolean {
 		return page.url.pathname == url;
 	}
