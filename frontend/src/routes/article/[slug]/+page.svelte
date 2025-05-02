@@ -7,8 +7,8 @@
 	const { data }: { data: PageData } = $props();
 	console.log(data.article.cover);
 
-	function parseMarkdown(text: string): string {
-		const parsed = marked.parse(text);
+	async function parseMarkdown(text: string): Promise<string> {
+		const parsed = await marked.parse(text);
 		return parsed;
 	}
 </script>
@@ -26,7 +26,13 @@
 			{data.article.title}
 		</h1>
 		<div class="mb-[37px] text-lg text-black">
-			{@html parseMarkdown(data.article?.content)}
+			{#await parseMarkdown(data?.article?.content)}
+				Загрузка...
+			{:then value}
+				{@html value}
+			{:catch error}
+				<span>Ой-ой, случилась непредвиденная ошибка...</span>
+			{/await}
 		</div>
 	</section>
 	<footer id="related-articles">
