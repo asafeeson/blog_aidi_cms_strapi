@@ -3,6 +3,7 @@
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
+	console.log(data);
 </script>
 
-<ArticlesList></ArticlesList>
+<ArticlesList blogArticles={data.articles} tags={data.tags}></ArticlesList>

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tag",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tag": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "tag"
+    },
+    "name": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "private": true,
+      "mappedBy": "tags"
+    }
+  }
+}

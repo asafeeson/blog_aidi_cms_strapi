@@ -1,26 +1,41 @@
 <script lang="ts">
-	import Header from '../ui/Header.svelte';
 	import Breadcrumbs from '../ui/Breadcrumbs.svelte';
 	import TagList from '../ui/TagList.svelte';
-	import type { IMenuItem } from '$lib/types';
+	import type { IArticleCard, IMenuItem } from '$lib/types';
 	import ArticleCard from '../ui/ArticleCard.svelte';
 
-	const menuLinks: IMenuItem[] = [
-		{ index: 1, url: '/', name: 'Статьи' },
-		{ index: 2, url: '/', name: 'Кейсы' }
-	];
+	interface Props {
+		blogArticles: IArticleCard[];
+		tags: any[];
+	}
+
+	let { blogArticles, tags }: Props = $props();
+	console.log(tags);
 </script>
 
-<Header {menuLinks} urlLogo="" altLogo="" srcLogo="" titleLogo=""></Header>
-<main>
+<main class="mb-20">
 	<Breadcrumbs
 		crumbs={[
-			{ name: 'Крошка 1', url: '/' },
-			{ name: 'Крошка 2', url: '/' }
+			{ name: 'Блог', url: '/' },
+			{ name: 'Все статьи', url: '' }
 		]}
 	/>
-	<TagList tags={['тег1', 'тег2', 'тег3']} />
-	{#each blogArticles as article}
-		<ArticleCard cover="" title="" preview="" date="" duration="" url="" />
-	{/each}
+	<TagList {tags} />
+	<svelte:boundary onerror={(e) => console.log(e)}>
+		<div class="grid grid-cols-3">
+			{#each blogArticles as article, i (article.slug)}
+				<ArticleCard
+					cover={article.cover}
+					title={article.title}
+					preview={article.preview}
+					date={article.publish_date}
+					duration={article.duration}
+					url={'/article/' + article.slug}
+				/>
+			{/each}
+		</div>
+		{#snippet failed(error, reset)}
+			<span class="text-red-500">упс! попробуйте, обновить страницу</span>
+		{/snippet}
+	</svelte:boundary>
 </main>

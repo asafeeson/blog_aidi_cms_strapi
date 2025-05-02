@@ -4,31 +4,68 @@ export interface IMenuItem {
 	name: string;
 }
 
-export interface IImage {
-	src: string;
-	alt?: string;
-	title?: string;
-	width?: number;
-	height?: number;
-	loading?: 'eager' | 'lazy';
-	decoding?: 'sync' | 'async' | 'auto';
-	referrerPolicy?: string;
-	crossOrigin?: 'anonymous' | 'use-credentials';
-	useMap?: string;
-	longDesc?: string;
-	isMap?: boolean;
-	srcset?: string;
-}
-
 export interface ICrumbs {
 	name: string;
 	url: string;
 }
+export interface IImage {
+	id?: number;
+	documentId?: string;
+	name?: string;
+	alternativeText?: string | null;
+	caption?: string | null;
+	width?: number;
+	height?: number;
+	formats?: Record<string, unknown>;
+	hash?: string;
+	ext?: string;
+	mime?: string;
+	size?: number;
+	url?: string;
+	previewUrl?: string | null;
+	provider?: string;
+	provider_metadata?: Record<string, unknown> | null;
+	createdAt?: string;
+	updatedAt?: string;
+	publishedAt?: string;
+}
 
 export interface IArticleCard {
-	cover: IImage;
-	title: string;
-	preview: string;
-	date: string;
-	duration: string;
+	id?: number;
+	documentId?: string;
+	title?: string;
+	preview?: string;
+	content?: string;
+	publish_date?: string;
+	slug?: string;
+	duration?: string;
+	createdAt?: string;
+	updatedAt?: string;
+	publishedAt?: string;
+	cover?: IImage;
+	tags?: any[];
+
+}
+
+export interface IBlogArticle {
+	id?: number;
+	documentId?: string;
+	title?: string;
+	preview?: string;
+	content?: string;
+	publish_date?: string;
+	slug?: string;
+	duration?: string;
+	createdAt?: string;
+	updatedAt?: string;
+	publishedAt?: string;
+	cover?: IImage;
+	tags?: any[];
+
+}
+
+export interface ITag {
+	id: number;
+	tag: string;
+	slug: string;
 }

@@ -1,21 +1,23 @@
 <script lang="ts">
-	let { tags }: { tags: string[] } = $props();
+	import type { ITag } from "$lib/types";
+
+	let { tags }: { tags: ITag[] } = $props();
 </script>
 
 <svelte:boundary onerror={(e) => console.error(e)}>
-	<section aria-labelledby="tag-list">
+	<section aria-labelledby="tag-list" class="mb-[35px]">
 		<h2 id="tag-list" class="hidden">Популярные теги</h2>
 		<nav>
-			<ul class="flex">
-				<ol>
-					{#each tags as tag}
+			<ul class="flex flex-row gap-2 flex-wrap">
+				{#each tags as tag, i (tag.id)}
+					<li>
 						<a
-							href={'/?search=' + tag}
-							class="bg-amber-200 flex items-center justify-center rounded-lg px-4 py-2"
-							>#{tag}</a
+							href={'/tag/' + tag.slug}
+							class="bg-lightblue flex items-center justify-center rounded-lg px-4 py-2 text-[15px]"
+							>#{tag.tag}</a
 						>
-					{/each}
-				</ol>
+					</li>
+				{/each}
 			</ul>
 		</nav>
 	</section>

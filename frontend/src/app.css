@@ -4,15 +4,20 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--font-sans: 'Manrope', sans-serif;
+	--font-base: 'Manrope', sans-serif;
 	--font-oswald: 'Oswald', sans-serif;
-	--font-base: 12px;
+	--color-primary: #01da01;
+	--color-secondary: #01bc01;
+	--color-title: #001c32;
+	--color-subtitle: #a3a3a3;
+	--color-lightblue: #e2edff;
+	--color-accent-blue: #0f61ef;
+	--color-lightgray: #f7f7f7;
 }
 
 @layer base {
-	html {
-		@apply font-sans;
-		@apply font-base;
+	body {
+		@apply bg-lightgray;
 	}
 
 	h1,

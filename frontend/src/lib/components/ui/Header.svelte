@@ -15,16 +15,18 @@
 </script>
 
 <svelte:boundary onerror={(e) => console.log(e)}>
-	<header class="h-100px br-b-1 flex items-center justify-between border-b-gray-300">
-		<HeaderLogo
-			url={urlLogo}
-			src={srcLogo}
-			alt={altLogo}
-			title={titleLogo}
-			width="120"
-			height="auto"
-		/>
-		<HeaderMenu links={menuLinks} />
+	<header class="br-b-2 mb-[35px] h-[100px] border-b border-b-[#BEBEBE]">
+		<div class="mx-auto flex h-full max-w-[960px] items-center justify-between">
+			<HeaderLogo
+				url="/"
+				src={'/logo_aidi.png'}
+				alt={altLogo}
+				title={titleLogo}
+				width="120"
+				height="auto"
+			/>
+			<HeaderMenu links={menuLinks} />
+		</div>
 	</header>
 	{#snippet failed(error, reset)}
 		<span class="text-red-500">упс! попробуйте, обновить страницу</span>
