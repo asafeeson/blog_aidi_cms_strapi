@@ -1,24 +1,30 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import type { IMenuItem } from '$lib/types';
 	import { page } from '$app/state';
 
 	let { links }: { links: IMenuItem[] } = $props();
-	console.log(page.url.pathname);
+	console.log(links);
+	function comparePathname(url: string): boolean {
+		console.log(page.url.pathname);
+		return page.url.pathname == url;
+	}
 </script>
 
 <nav>
 	<ul class="flex w-full items-center justify-end gap-[50px]">
-		{#each links as link}
+		{#each links as link, i (link.id)}
 			<li>
 				<a
-					href={link.url}
+					href={link.slug}
 					class="hover:text-primary text-15px text-black"
-					class:active-link={() => page.url.pathname === link.url}
+					class:active-link={() => comparePathname(link.slug)}
 					title={link.name}
 					aria-label={link.name}
 				>
 					{link.name}
+					{link.id}
+					{link.slug}
+					{page.url.pathname}
 				</a>
 			</li>
 		{/each}

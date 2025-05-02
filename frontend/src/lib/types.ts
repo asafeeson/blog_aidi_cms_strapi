@@ -1,7 +1,7 @@
 export interface IMenuItem {
-	index: number;
-	url: string;
+	id: number;
 	name: string;
+	slug: string;
 }
 
 export interface ICrumbs {

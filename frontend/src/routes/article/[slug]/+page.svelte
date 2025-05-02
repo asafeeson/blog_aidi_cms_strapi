@@ -6,14 +6,12 @@
 	import { page } from '$app/state';
 
 	const { data }: { data: PageData } = $props();
-	console.log(data.article);
 
 	async function parseMarkdown(text: string): Promise<string> {
 		const parsed = await marked.parse(text);
 		return parsed;
 	}
 </script>
-
 
 <svelte:head>
 	<title>{data.globalSeoData.siteTitle}</title>

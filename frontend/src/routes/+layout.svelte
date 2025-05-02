@@ -40,8 +40,8 @@
 	{/if}
 </svelte:head>
 
-<Header {menuLinks} urlLogo="" altLogo="" srcLogo="" titleLogo=""></Header>
+<Header menuLinks={data.globalPageData.menu} urlLogo="" altLogo="" srcLogo="" titleLogo=""></Header>
 <div class="mx-auto max-w-[960px]">
 	{@render children()}
 </div>
-<Footer></Footer>
+<Footer pageData={data.globalPageData}></Footer>

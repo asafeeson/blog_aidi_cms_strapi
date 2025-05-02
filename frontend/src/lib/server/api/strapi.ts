@@ -66,7 +66,6 @@ export async function getArticleBySlug(slug: string) {
 		}
 
 		const json = await res.json();
-		console.log(json)
 		const article = json.data?.[0];
 
 		if (!article) {
@@ -138,6 +137,28 @@ export async function getGlobalSeo() {
 	}
 }
 
+export async function getGlobalPage() {
+	try {
+		const url = new URL(`${STRAPI_API_URL}/global-page`);
+		url.searchParams.append('populate[0]', 'menu');
+
+		const res = await fetch(url, {
+			headers: {
+				Authorization: `Bearer ${STRAPI_TOKEN}`
+			}
+		});
+		if (!res.ok) {
+			console.error('Error fetching global SEO from Strapi:', res.statusText);
+			return null;
+		}
+		const { data } = await res.json();
+		return data;
+	} catch (error) {
+		console.error('Error fetching global SEO from Strapi:', error);
+		return null;
+	}
+}
+
 export async function fetchArticle(slug: string) {
 	try {
 		const res = await fetch(
@@ -156,6 +177,47 @@ export async function fetchArticle(slug: string) {
 		return data?.length > 0 ? data[0].attributes : null;
 	} catch (error) {
 		console.error(`Error fetching article "${slug}" from Strapi:`, error);
+		return null;
+	}
+}
+
+
+export async function getPageHeader() {
+	try {
+		const url = `${STRAPI_API_URL}/header`;
+		const res = await fetch(url, {
+			headers: {
+				Authorization: `Bearer ${STRAPI_TOKEN}`
+			}
+		});
+		if (!res.ok) {
+			console.error('Error fetching global SEO from Strapi:', res.statusText);
+			return null;
+		}
+		const { data } = await res.json();
+		return data;
+	} catch (error) {
+		console.error('Error fetching global SEO from Strapi:', error);
+		return null;
+	}
+}
+
+export async function getPageFooter() {
+	try {
+		const url = `${STRAPI_API_URL}/footer`;
+		const res = await fetch(url, {
+			headers: {
+				Authorization: `Bearer ${STRAPI_TOKEN}`
+			}
+		});
+		if (!res.ok) {
+			console.error('Error fetching global SEO from Strapi:', res.statusText);
+			return null;
+		}
+		const { data } = await res.json();
+		return data;
+	} catch (error) {
+		console.error('Error fetching global SEO from Strapi:', error);
 		return null;
 	}
 }

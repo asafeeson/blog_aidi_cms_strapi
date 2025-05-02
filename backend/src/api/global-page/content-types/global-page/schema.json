@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_pages",
+  "info": {
+    "singularName": "global-page",
+    "pluralName": "global-pages",
+    "displayName": "Global Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-item"
+    },
+    "copyright": {
+      "type": "text"
+    },
+    "lawdata": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

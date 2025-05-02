@@ -1,10 +1,12 @@
 import type { LayoutServerLoad } from './$types';
-import { getGlobalSeo } from '$lib/server/api/strapi';
+import { getGlobalPage, getGlobalSeo } from '$lib/server/api/strapi';
 
 export const load: LayoutServerLoad = async (event) => {
 	const globalSeoData = await getGlobalSeo();
-	console.log(globalSeoData);
+	const globalPageData = await getGlobalPage();
+	console.log(globalPageData);
 	return {
-		globalSeoData
+		globalSeoData,
+		globalPageData
 	};
 };

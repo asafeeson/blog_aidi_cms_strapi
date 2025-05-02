@@ -10,7 +10,6 @@
 	}
 
 	let { blogArticles, tags }: Props = $props();
-	console.log(tags);
 </script>
 
 <main class="mb-20">

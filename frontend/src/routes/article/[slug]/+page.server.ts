@@ -7,7 +7,6 @@ export const load: PageServerLoad = async (event) => {
 	const articleContent = await getArticleBySlug(slug);
 	const article = articleContent?.article as IBlogArticle;
 	const previewArticles = (await getArticlesPreviews(3)) as IBlogArticle[];
-	console.log(article);
 	return {
 		article,
 		previewArticles
