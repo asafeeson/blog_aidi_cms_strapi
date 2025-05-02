@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_seos",
+  "info": {
+    "singularName": "global-seo",
+    "pluralName": "global-seos",
+    "displayName": "Global SEO"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "siteTitle": {
+      "type": "string"
+    },
+    "siteDescription": {
+      "type": "text"
+    },
+    "defaultKeywords": {
+      "type": "string"
+    },
+    "defaultCanonicalURL": {
+      "type": "string"
+    },
+    "ogImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
