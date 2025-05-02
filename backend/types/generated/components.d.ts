@@ -14,6 +14,19 @@ export interface MenuMenuItem extends Struct.ComponentSchema {
   };
 }
 
+export interface PageAddress extends Struct.ComponentSchema {
+  collectionName: 'components_page_addresses';
+  info: {
+    displayName: 'address';
+  };
+  attributes: {
+    copyright: Schema.Attribute.String;
+    email: Schema.Attribute.Email;
+    lawdata: Schema.Attribute.RichText;
+    phone: Schema.Attribute.String;
+  };
+}
+
 export interface PagePageSeo extends Struct.ComponentSchema {
   collectionName: 'components_page_page_seos';
   info: {
@@ -35,6 +48,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'menu.menu-item': MenuMenuItem;
+      'page.address': PageAddress;
       'page.page-seo': PagePageSeo;
     }
   }

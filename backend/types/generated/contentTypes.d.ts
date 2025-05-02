@@ -396,6 +396,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     preview: Schema.Attribute.String;
     publish_date: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    seodata: Schema.Attribute.Component<'page.page-seo', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     title: Schema.Attribute.String;
@@ -408,6 +409,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
 export interface ApiGlobalSeoGlobalSeo extends Struct.SingleTypeSchema {
   collectionName: 'global_seos';
   info: {
+    description: '';
     displayName: 'Global SEO';
     pluralName: 'global-seos';
     singularName: 'global-seo';
@@ -427,7 +429,9 @@ export interface ApiGlobalSeoGlobalSeo extends Struct.SingleTypeSchema {
       'api::global-seo.global-seo'
     > &
       Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
     ogImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    ogTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text;
     siteTitle: Schema.Attribute.String;
@@ -440,6 +444,7 @@ export interface ApiGlobalSeoGlobalSeo extends Struct.SingleTypeSchema {
 export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
   collectionName: 'headers';
   info: {
+    description: '';
     displayName: 'Header';
     pluralName: 'headers';
     singularName: 'header';
@@ -458,6 +463,7 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    menu: Schema.Attribute.Component<'menu.menu-item', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

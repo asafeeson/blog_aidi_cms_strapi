@@ -4,7 +4,8 @@
   "info": {
     "singularName": "global-seo",
     "pluralName": "global-seos",
-    "displayName": "Global SEO"
+    "displayName": "Global SEO",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,14 +24,21 @@
       "type": "string"
     },
     "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
     }
   }
 }

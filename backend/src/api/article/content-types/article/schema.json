@@ -47,6 +47,11 @@
     },
     "preview": {
       "type": "string"
+    },
+    "seodata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.page-seo"
     }
   }
 }

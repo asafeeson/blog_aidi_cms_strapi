@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_addresses",
+  "info": {
+    "displayName": "address"
+  },
+  "options": {},
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "lawdata": {
+      "type": "richtext"
+    }
+  }
+}
