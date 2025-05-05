@@ -8,16 +8,40 @@
 
 ```bash
 git clone https://github.com/asafeeson/blog_aidi_cms_strapi
-cd blog_aidi_cms_strapi
 ```
 
+## 2. Предварительные требования
+
+**Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js версии не ниже 20.
+
+## Инструкция по установке последней версии Node.js
+
+Установка через fnm, с использование pnpm. Рекомендую использовать pnpm, для быстрой установки зависимостей. Официальная документация: [Install Node.js](https://nodejs.org/en/download)
+
+### Загрузка и установка fnm:
+
+```bash
+curl -o- https://fnm.vercel.app/install | bash
+```
+
+### Загрузка и установка Node.js:
+
+```bash
+fnm install 22
+node -v # Версия Node.js "v22.15.0". 
+```
+
+### Загрузка и установка pnpm:
+
+```bash
+corepack enable pnpm
+pnpm -v # Проверка версии pnpm
+```
+
+**PostgreSQL:** Установите PostgreSQL и создайте базу данных для Strapi версии >14.
+
+
 ## 2. Установка и запуск CMS Strapi (Backend)
-
-### Предварительные требования
-
-* **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js версии не ниже 20.
-
-* **PostgreSQL:** Установите PostgreSQL и создайте базу данных для Strapi версии >14.
 
 ### Установка
 
@@ -30,7 +54,7 @@ cd blog_aidi_cms_strapi
 2.  Установите зависимости:
 
     ```bash
-    npm install
+    pnpm install
     ```
 
 3.  Создайте файл `.env` в директории `backend` и добавьте переменные окружения для подключения к базе данных PostgreSQL и сгенерируйте ключи и соль для Strapi:
@@ -65,13 +89,21 @@ cd blog_aidi_cms_strapi
 4.  Соберите Strapi для production:
 
     ```bash
-    npm run build
+    pnpm run build
+    ```
+
+    Если при выполнении команды появляется ошибка 
+    > FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+    
+    используйте следующую команду:
+    ```bash
+    NODE_OPTION="--max-old-space-size=4096" pnpm run build
     ```
 
 5.  Запустите Strapi в режиме production. Порт по-умолчанию 1337:
 
     ```bash
-    npm start
+    pnpm start
     ```
 
     Убедитесь, что переменные окружения для базы данных настроены правильно для production окружения.
@@ -80,10 +112,9 @@ cd blog_aidi_cms_strapi
 
 ### Предварительные требования
 
-* **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js версии не ниже 20.
+- **Node.js:** Убедитесь, что у вас установлена поддерживаемая версия Node.js версии не ниже 20.
 
 ### Production установка и запуск SvelteKit проекта
-
 
 1.  Перейдите в директорию `frontend`:
 
@@ -94,7 +125,7 @@ cd blog_aidi_cms_strapi
 2.  Установите зависимости:
 
     ```bash
-    npm install
+    pnpm install
     ```
 
 3.  Создайте файл `.env` в директории `frontend` и добавьте необходимые переменные окружения, например, URL бэкенда Strapi:
@@ -109,20 +140,19 @@ cd blog_aidi_cms_strapi
     PRIVATE_STRAPI_API_URL - используется для запросов сервер-сервер в процессе SSR.
     PUBLIC_BASE_URL - внешний URL для подгрузки изображений на стороне клиента.
 
-
 4.  Установите зависимости:
 
     ```bash
-    npm install
+    pnpm install
     ```
 
 5.  Соберите SvelteKit для production:
 
     ```bash
-    npm run build
+    pnpm run build
     ```
 
 6.  Запустите SvelteKit приложение. Порт по умолчанию 3000.
     ```bash
-    npm run start
+    pnpm run start
     ```
