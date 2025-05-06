@@ -136,7 +136,6 @@ pnpm -v # Проверка версии pnpm
         PUBLIC_BASE_URL=tobemodified
         PORT=3000
     ```
-    > Измените значение переменной PORT на нужный порт для запуска. Порт по умолчанию 3000.
 
     Для получения PRIVATE_STRAPI_TOKEN вам необходимо зайти в админку Strapi, перейти в раздел API Tokens -> Full Access и нажмите кнопку Regenerate, после чего появится Token.
     PRIVATE_STRAPI_API_URL - используется для запросов сервер-сервер в процессе SSR.
@@ -156,6 +155,6 @@ pnpm -v # Проверка версии pnpm
 
 6.  Запустите SvelteKit приложение.
     ```bash
-    pnpm run start
+    HOST=127.0.0.1 PORT=4000 node build
     ```
-
+    > Измените значение переменной PORT на нужный порт для запуска. Порт по умолчанию 3000.
