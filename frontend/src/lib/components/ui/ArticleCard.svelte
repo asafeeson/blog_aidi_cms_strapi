@@ -14,7 +14,7 @@
 
 <svelte:boundary onerror={(e) => console.error(e)}>
 	<article
-		class="rounded-5px flex max-w-[304px] flex-col justify-between space-y-4 bg-white text-[12px] font-medium"
+		class="rounded-5px flex min-w-[304px] flex-col md:justify-between space-y-4 bg-white text-[12px] font-medium"
 	>
 		<div class="h-[175px] w-full overflow-hidden">
 			<a href={url} {title} aria-label={title}>

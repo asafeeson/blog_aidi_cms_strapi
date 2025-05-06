@@ -15,7 +15,7 @@
 </script>
 
 <svelte:boundary onerror={(e) => console.log(e)}>
-	<header class="br-b-2 mb-[35px] h-[100px] border-b border-b-[#BEBEBE]">
+	<header class="br-b-2 mb-[35px] h-[100px] border-b border-b-[#BEBEBE] px-3 lg:px-0">
 		<div class="mx-auto flex h-full max-w-[960px] items-center justify-between">
 			<HeaderLogo
 				url="/"

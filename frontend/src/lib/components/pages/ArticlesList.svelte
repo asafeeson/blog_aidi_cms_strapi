@@ -12,7 +12,7 @@
 	let { blogArticles, tags }: Props = $props();
 </script>
 
-<main class="mb-20">
+<main class="mb-20 px-3 lg:px-0">
 	<Breadcrumbs
 		crumbs={[
 			{ name: 'Блог', url: '/' },
@@ -21,7 +21,7 @@
 	/>
 	<TagList {tags} />
 	<svelte:boundary onerror={(e) => console.log(e)}>
-		<div class="grid grid-cols-3">
+		<div class="grid grid-cols-1 col-span-full gap-4 md:grid-cols-3">
 			{#each blogArticles as article, i (article.slug)}
 				<ArticleCard
 					cover={article.cover}

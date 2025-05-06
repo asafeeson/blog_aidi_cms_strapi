@@ -58,16 +58,16 @@
 	{/if}
 </svelte:head>
 
-<article class="mb-20">
+<article class="mb-20 lg:px-0 px-3">
 	<section id="article-content" class="mb-[54px]">
-		<div class="hero-image mb-[47px] h-[319px] overflow-hidden rounded-[10px]">
+		<div class="hero-image mb-5 lg:mb-[47px] sm:h-[319px] h-auto overflow-hidden rounded-[10px]">
 			<img
 				src={PUBLIC_BASE_URL + data.article?.cover?.url}
 				alt={data.article?.cover?.alternativeText}
 				class="w-full object-cover"
 			/>
 		</div>
-		<h1 class="text-title mb-[37px] text-[40px] font-medium leading-[1.10]">
+		<h1 class="text-title lg:mb-[37px] mb-4 text-[40px] font-medium leading-[1.10]">
 			{data.article?.title}
 		</h1>
 		<div class="mb-[37px] text-lg text-black">
@@ -85,7 +85,7 @@
 			Читать другие статьи
 		</h2>
 		<svelte:boundary onerror={(e) => console.log(e)}>
-			<div class="grid grid-cols-3">
+			<div class="grid lg:grid-cols-3">
 				{#each data.previewArticles as article, i (article.slug)}
 					<ArticleCard
 						cover={article.cover}
