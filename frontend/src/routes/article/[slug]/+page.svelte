@@ -4,6 +4,7 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import { marked } from 'marked';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 
 	const { data }: { data: PageData } = $props();
 
@@ -11,6 +12,24 @@
 		const parsed = await marked.parse(text);
 		return parsed;
 	}
+
+	onMount(() => {
+		const script = document.createElement('script');
+		script.type = 'application/ld+json';
+		script.textContent = JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'WebPage',
+			name: data.article?.seodata?.metaTitle,
+			description: data.article?.seodata?.metaDescription,
+			url: page.url.href
+		});
+		const viewportMeta = document.querySelector('meta[name="viewport"]');
+		if (viewportMeta) {
+			viewportMeta.insertAdjacentElement('afterend', script);
+		} else {
+			document.head.prepend(script);
+		}
+	});
 </script>
 
 <svelte:head>

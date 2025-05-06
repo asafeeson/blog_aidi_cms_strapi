@@ -2,8 +2,27 @@
 	import { page } from '$app/state';
 	import ArticlesList from '$lib/components/pages/ArticlesList.svelte';
 	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
 
 	const { data }: { data: PageData } = $props();
+
+	onMount(() => {
+		const script = document.createElement('script');
+		script.type = 'application/ld+json';
+		script.textContent = JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'WebPage',
+			name: data.globalSeoData?.siteTitle,
+			description: data.globalSeoData?.metaDescription,
+			url: page.url.href
+		});
+		const viewportMeta = document.querySelector('meta[name="viewport"]');
+		if (viewportMeta) {
+			viewportMeta.insertAdjacentElement('afterend', script);
+		} else {
+			document.head.prepend(script);
+		}
+	});
 </script>
 
 <svelte:head>

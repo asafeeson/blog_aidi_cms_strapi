@@ -6,15 +6,18 @@
 </script>
 
 <svelte:boundary onerror={(e) => console.error(e)}>
-	<nav class="mb-[22px]">
-		<ol class="flex items-center text-[15px] text-[#7B7B7B]">
+	<nav class="mb-[22px]" aria-label="Breadcrumb">
+		<ol class="flex items-center text-[15px] text-[#7B7B7B]" itemscope itemtype="https://schema.org/BreadcrumbList">
 			{#each crumbs as crumb, i (crumb.url)}
-				<li>
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 					<a
 						href={crumb.url}
 						title={crumb.name}
-						class:active-link={() => page.url.pathname == crumb.url}>{crumb.name}</a
-					>
+						itemprop="item"
+						class:active-link={() => page.url.pathname == crumb.url}>
+						<span itemprop="name">{crumb.name}</span>
+					</a>
+					<meta itemprop="position" content={i + 1} />
 				</li>
 				{#if i < crumbs.length - 1}
 					<span class="mx-2">/</span>

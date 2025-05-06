@@ -5,13 +5,12 @@
 	import type { Snippet } from 'svelte';
 	import '../app.css';
 	import type { LayoutServerData } from './$types';
-	import { page } from '$app/state';
 
 	let { children, data }: { children: Snippet; data: LayoutServerData } = $props();
 </script>
 
 <Header menuLinks={data.globalPageData.menu} urlLogo="" altLogo="" srcLogo="" titleLogo=""></Header>
-<div class="mx-auto max-w-[960px]">
+<div class="mx-auto max-w-[960px] h-auto">
 	{@render children()}
 </div>
 <Footer pageData={data.globalPageData}></Footer>
