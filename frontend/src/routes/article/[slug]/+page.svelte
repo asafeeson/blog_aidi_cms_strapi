@@ -67,7 +67,7 @@
 				class="w-full object-cover"
 			/>
 		</div>
-		<h1 class="text-title lg:mb-[37px] mb-4 text-[40px] font-medium leading-[1.10]">
+		<h1 class="text-title lg:mb-[37px] mb-4 font-medium leading-[1.10]">
 			{data.article?.title}
 		</h1>
 		<div class="mb-[37px] text-lg text-black">
@@ -85,7 +85,7 @@
 			Читать другие статьи
 		</h2>
 		<svelte:boundary onerror={(e) => console.log(e)}>
-			<div class="grid lg:grid-cols-3">
+			<div class="grid lg:grid-cols-3 gap-6">
 				{#each data.previewArticles as article, i (article.slug)}
 					<ArticleCard
 						cover={article.cover}
