@@ -134,7 +134,6 @@ pnpm -v # Проверка версии pnpm
         PRIVATE_STRAPI_TOKEN=tobemodified
         PRIVATE_STRAPI_API_URL=tobemodified
         PUBLIC_BASE_URL=tobemodified
-        PORT=3000
     ```
 
     Для получения PRIVATE_STRAPI_TOKEN вам необходимо зайти в админку Strapi, перейти в раздел API Tokens -> Full Access и нажмите кнопку Regenerate, после чего появится Token.
