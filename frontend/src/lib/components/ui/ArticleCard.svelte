@@ -33,7 +33,7 @@
 			<p class="line-clamp-3 overflow-hidden leading-[1.40]">{preview}</p>
 		</div>
 		<footer class="flex items-center justify-between px-6">
-			<time datetime={date}>{date}</time>
+			<time datetime={date}>{date ? new Date(date).toLocaleDateString('ru-RU') : 'Неверный формат даты'}</time>
 			<div class="flex items-center justify-center gap-[3px]">
 				<img src="/icons/icon-time.png" alt="Время чтения статьи" class="aspect-square" />
 				<p>{duration}</p>
