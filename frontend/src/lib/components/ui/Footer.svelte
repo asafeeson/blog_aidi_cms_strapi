@@ -3,9 +3,9 @@
 </script>
 
 <footer class="w-full bg-black py-[55px] text-[15px] text-white">
-	<div class="mx-auto max-w-[960px]">
+	<div class="mx-auto max-w-[960px] flex flex-col flex-wrap">
 		<p class="mb-[23px]">{@html pageData?.copyright}</p>
-		<address class="flex flex-wrap items-end justify-between not-italic">
+		<address class="flex flex-row flex-wrap items-end justify-between not-italic gap-2 md:gap-0">
 			<p>
 				{@html pageData?.lawdata}
 			</p>
