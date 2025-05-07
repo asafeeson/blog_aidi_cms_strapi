@@ -71,11 +71,13 @@
 		<h1 class="text-title lg:mb-[37px] mb-4 font-medium leading-[1.10]">
 			{data.article?.title}
 		</h1>
-		<div class="mb-[37px] text-lg text-black">
+		<div class="mb-[37px] text-lg text-black ">
 			{#await parseMarkdown(data?.article?.content)}
 				Загрузка...
 			{:then value}
-				{@html value}
+				<div class="space-y-4">
+					{@html value}
+				</div>
 			{:catch error}
 				<span>Ой-ой, случилась непредвиденная ошибка...</span>
 			{/await}
