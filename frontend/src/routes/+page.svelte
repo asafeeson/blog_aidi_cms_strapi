@@ -27,6 +27,7 @@
 
 <svelte:head>
 	<title>{data.globalSeoData.siteTitle}</title>
+	<meta name="title" content={data.globalSeoData.siteTitle} />
 	<meta name="description" content={data.globalSeoData.siteDescription} />
 	{#if data.globalSeoData.defaultKeywords}
 		<meta name="keywords" content={data.globalSeoData.defaultKeywords} />

@@ -34,6 +34,7 @@
 
 <svelte:head>
 	<title>{data.article?.seodata?.metaTitle}</title>
+	<meta name="title" content={data.article?.seodata?.metaTitle} />
 	<meta name="description" content={data.article?.seodata?.metaDescription} />
 	{#if data.article?.seodata?.defaultKeywords}
 		<meta name="keywords" content={data.article?.seodata?.keywords} />
