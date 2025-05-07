@@ -5,8 +5,6 @@ export const load: PageServerLoad = async (event) => {
 	const slug = event.params.tag;
 	const article = await getArticlesByTagSlug(slug);
 	const previewArticles = await getArticlesPreviews(3);
-	console.log(article);
-	console.log(previewArticles);
 	return {
 		article, previewArticles
 	};
