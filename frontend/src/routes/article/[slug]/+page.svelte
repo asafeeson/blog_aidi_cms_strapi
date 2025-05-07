@@ -33,7 +33,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.article?.seodata?.metaTitle}</title>
+	<title>{data.article?.title}</title>
 	<meta name="title" content={data.article?.seodata?.metaTitle} />
 	<meta name="description" content={data.article?.seodata?.metaDescription} />
 	{#if data.article?.seodata?.defaultKeywords}
